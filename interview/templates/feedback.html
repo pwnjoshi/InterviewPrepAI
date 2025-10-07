@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview Feedback</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 20px; background-color: #f5f5f5; }
+        .header { background: #28a745; color: white; padding: 20px; text-align: center; margin-bottom: 20px; border-radius: 8px; }
+        .summary { background: white; padding: 20px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .summary-item { text-align: center; padding: 15px; background: #f8f9fa; border-radius: 4px; margin-bottom: 10px; }
+        .summary-value { font-size: 24px; font-weight: bold; color: #007cba; }
+        .summary-label { color: #666; font-size: 14px; }
+        .feedback-item { background: white; padding: 20px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .feedback-header { font-weight: bold; margin-bottom: 10px; color: #333; }
+        .answer-preview { background: #f8f9fa; padding: 15px; margin: 10px 0; border-left: 4px solid #007cba; font-style: italic; }
+        .suggestion { background: #e7f3ff; padding: 15px; margin-top: 10px; border-left: 4px solid #007cba; }
+        .btn { background: #007cba; color: white; padding: 12px 25px; border: none; border-radius: 4px; cursor: pointer; margin: 0 10px; text-decoration: none; display: inline-block; }
+        .btn:hover { background: #005a87; }
+        .actions { text-align: center; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Interview Feedback Report</h1>
+        <p>Demo feedback analysis</p>
+    </div>
+    
+    <div class="summary">
+        <div class="summary-item">
+            <div class="summary-value">{{ answered_questions }}/{{ total_questions }}</div>
+            <div class="summary-label">Questions Answered</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-value">Demo Mode</div>
+            <div class="summary-label">Performance Analysis</div>
+        </div>
+    </div>
+    
+    <h2>Detailed Feedback</h2>
+    
+    {% for item in feedback_items %}
+    <div class="feedback-item">
+        <div class="feedback-header">Question {{ forloop.counter }} - Score: {{ item.score }}%</div>
+        <div class="answer-preview"><strong>Question:</strong><br>{{ item.question }}</div>
+        <div class="answer-preview"><strong>Your Answer:</strong><br>{% if item.answer %}{{ item.answer }}{% else %}<em>No answer provided</em>{% endif %}</div>
+        <div class="suggestion"><strong> Feedback:</strong><br>{{ item.feedback }}</div>
+    </div>
+    {% endfor %}
+    
+    <div class="feedback-item">
+        <h3> Overall Recommendations</h3>
+        <p>This is a demo feedback system. In the full version, AI will analyze your responses and provide detailed, personalized feedback.</p>
+        <p><strong>Next Steps:</strong></p>
+        <ul>
+            <li>Practice answering with specific examples</li>
+            <li>Use the STAR method (Situation, Task, Action, Result)</li>
+            <li>Research common interview questions for your field</li>
+        </ul>
+    </div>
+    
+    <div class="actions">
+        <a href="{% url 'upload_resume' %}" class="btn">Practice Again</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .header {
+            background: #007cba;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .candidate-info {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007cba;
+            border-radius: 4px;
+        }
+        
+        .question {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .question-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .question-text {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+        
+        .submit-btn {
+            background: #28a745;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Interview Questions</h1>
+        <p>Answer the questions below (Demo Mode)</p>
+    </div>
+    
+    <div class="candidate-info">
+        <strong>Candidate:</strong> {{ candidate_name }}
+        <br><small>Demo interview session</small>
+    </div>
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        {% for question in questions %}
+        <div class="question">
+            <div class="question-header">
+                Question {{ forloop.counter }}
+            </div>
+            <div class="question-text">
+                {{ question.text }}
+            </div>
+            <textarea name="answer_{{ question.id }}" placeholder="Type your answer here..."></textarea>
+        </div>
+        {% endfor %}
+        
+        <center>
+            <button type="submit" class="submit-btn">Submit Answers</button>
+        </center>
+    </form>
+</body>
+</html>
