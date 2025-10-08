@@ -1,24 +1,34 @@
+from pymongo import MongoClient
 def get_database():
-    """Get MongoDB database connection"""
-    # TODO: Implement MongoDB connection
-    pass
-
+    client = MongoClient("mongodb://localhost:27017/")  # local MongoDB
+    db = client.nexora_db
+    return db
 def insert_resume(resume_data):
-    """Insert resume data into MongoDB"""
-    # TODO: Implement resume insertion
-    pass
+    db = get_database()
+    resume_col = db.resume
+    resume_col.insert_one(resume_data)
+    print("✅ Resume inserted successfully")
+
 
 def get_questions_by_skills(skills, limit=10):
-    """Get questions from MongoDB based on skills"""
-    # TODO: Implement questions retrieval
-    pass
+    db = get_database()
+    question_col = db.question
+    # Fetch questions matching any skill
+    questions = question_col.find({"skill": {"$in": skills}}, {"_id":0}).limit(limit)
+    return list(questions)
+
 
 def save_answers(answers_data):
-    """Save candidate answers to MongoDB"""
-    # TODO: Implement answer saving
-    pass
+    db = get_database()
+    interview_col = db.interview
+    interview_col.insert_one(answers_data)
+    print("✅ Answers saved successfully")
+
 
 def get_session_data(session_id):
-    """Get complete session data from MongoDB"""
-    # TODO: Implement session data retrieval
-    pass
+  def get_session_data(session_id):
+    db = get_database()
+    interview_col = db.interview
+    session = interview_col.find_one({"session_id": session_id}, {"_id":0})
+    return session
+
