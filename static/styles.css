@@ -1,0 +1,116 @@
+:root {
+    --primary-color: #5D3EFF;
+    --primary-light: #F3F1FF;
+    --text-dark: #1E1E1E;
+    --text-muted: #6B7280;
+    --border-radius-lg: 1.5rem; /* 24px */
+    --border-radius-md: 1rem;   /* 16px */
+    --border-radius-sm: 0.5rem;   /* 8px */
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background-color: #FBFAFF;
+    color: var(--text-dark);
+}
+
+/* --- Buttons --- */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.btn-primary:hover {
+    background-color: #4a31cc;
+    border-color: #4a31cc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(93, 62, 255, 0.3);
+}
+
+.btn-outline-dark {
+    border-color: #E0E0E0;
+    color: var(--text-dark);
+    background-color: #FFFFFF;
+    border-width: 1px;
+}
+.btn-outline-dark:hover {
+    background-color: #f8f9fa;
+    color: var(--text-dark);
+    border-color: #c7c7c7;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    padding: 1rem 0;
+    background-color: var(--primary-light);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+.navbar-brand:hover {
+    color: #4a31cc;
+}
+
+.nav-link {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+.nav-link.active, .nav-link:hover {
+    color: var(--text-dark);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    padding: 4rem 0;
+    background-color: var(--primary-light);
+    border-bottom-left-radius: var(--border-radius-lg);
+    border-bottom-right-radius: var(--border-radius-lg);
+}
+
+.hero-preview-card {
+    background-color: #FFFFFF;
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: 
+        0 2px 4px rgba(0,0,0,0.03),
+        inset 0 0 10px rgba(93, 62, 255, 0.05);
+}
+
+/* --- Feature Cards --- */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--border-radius-md);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-card {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+.feature-card .icon-box {
+    background-color: var(--primary-light) !important;
+    color: var(--primary-color) !important;
+}

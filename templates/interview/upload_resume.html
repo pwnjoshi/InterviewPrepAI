@@ -1,0 +1,14 @@
+<h2>Create Your Candidate Profile</h2>
+<p>Please upload your resume to get started.</p>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div>
+        <label for="resume">Upload Resume (PDF or DOCX):</label>
+        <input type="file" name="resume" id="resume" required>
+    </div>
+
+    <br>
+    <button type="submit">Upload and Create Profile</button>
+</form>

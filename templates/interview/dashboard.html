@@ -1,0 +1,25 @@
+<h2>Your Interview Dashboard</h2>
+
+<h3>Welcome, {{ request.user.username }}!</h3>
+
+{% if profile %}
+    <p>Your resume has been successfully parsed.</p>
+
+    <h4>Skills We Found:</h4>
+    {% if skills %}
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>We couldn't find any specific skills from our list in your resume.</p>
+    {% endif %}
+
+    <hr>
+    <a href="#">Start New Interview (Coming Soon)</a>
+
+{% else %}
+    <p>You have not uploaded a profile yet.</p>
+    <a href="{% url 'upload_resume' %}">Upload Resume Now</a>
+{% endif %}
