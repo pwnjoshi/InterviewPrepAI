@@ -1,8 +1,14 @@
+/* =========================
+Global & Landing Page Styles
+=========================
+*/
+
 :root {
     --primary-color: #5D3EFF;
     --primary-light: #F3F1FF;
     --text-dark: #1E1E1E;
     --text-muted: #6B7280;
+    --border-color: #E0E0E0; /* Added this for upload page */
     --border-radius-lg: 1.5rem; /* 24px */
     --border-radius-md: 1rem;   /* 16px */
     --border-radius-sm: 0.5rem;   /* 8px */
@@ -50,6 +56,7 @@ body {
 }
 
 /* --- Navigation Bar --- */
+/* Default navbar for landing page */
 .navbar {
     padding: 1rem 0;
     background-color: var(--primary-light);
@@ -113,4 +120,83 @@ body {
 .feature-card .icon-box {
     background-color: var(--primary-light) !important;
     color: var(--primary-color) !important;
+}
+
+
+/* =========================
+Upload Page Styles
+=========================
+*/
+
+.upload-page-body {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.dropzone-box {
+    display: block;
+    background-color: #FFFFFF;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.dropzone-box:hover {
+    border-color: var(--primary-color);
+    background-color: var(--primary-light);
+}
+.dropzone-box .icon-box {
+    background-color: #F3F4F6;
+    color: var(--text-dark);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    border-radius: 99px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+/* =========================
+Dashboard-Specific Styles
+=========================
+*/
+.dashboard-body {
+    padding-top: 0; /* Header is full-width now */
+    padding-bottom: 3rem;
+}
+
+/* Override navbar for a clean look on internal pages */
+.dashboard-body .navbar {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-card {
+    background: #FFFFFF;
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    border: 1px solid #F0F0F0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.skill-pill {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    border-radius: var(--border-radius-sm);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0.25rem;
 }
