@@ -106,10 +106,9 @@ Then open http://127.0.0.1:8000/ in your browser.
 
 - Python 3.8+
 - Django 5.x
-- SQLite (default)
+- SQLite (default) change it 
 - PyMuPDF/python-docx for resume parsing
-- MongoDB optional (present, not required for local run)
-
+- MongoDB 
 ---
 
 Contributions and issues are welcome. Keep changes small and focused.
