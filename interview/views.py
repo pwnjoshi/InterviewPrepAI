@@ -3,6 +3,7 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
 import os
 
+@login_required(login_url='/login/')
 def upload_resume(request):
     """Handle resume upload""" 
     """but jab tum models banaoge ye logic change kr lena to store in mongodb direcly ( just a save functino hoga yaha) """
