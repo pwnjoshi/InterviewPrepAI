@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora Dashboard</title>
+    
+    {% load static %}
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+
+</head>
+<body class="dashboard-body">
+
+    <!-- Dashboard Header -->
+    <header class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">Nexora</a>
+            <a href="{% url 'logout' %}" class="btn btn-outline-dark">Logout</a>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+
+                <!-- Welcome Header -->
+                <div class="mb-4">
+                    <h2 class="fw-bold">Your Interview Dashboard</h2>
+                    <p class="h4 text-muted">Welcome, {{ request.user.username }}!</p>
+                </div>
+
+                {% if profile %}
+
+
+                    <div class="dashboard-card text-center">
+                        <h4 class="fw-bold">Ready for the challenge?</h4>
+                        <p class="text-muted">Your resume has been successfully parsed. Let's get you prepared!</p>
+                        <a href="#" class="btn btn-primary btn-lg mt-3">
+                            <i class="bi bi-camera-video-fill me-2"></i>Start New Interview
+                        </a>
+                        <p class="text-muted small mt-3">(Feature Coming Soon)</p>
+                    </div>
+
+
+                    <div class="dashboard-card">
+                        <h4 class="fw-bold mb-3">Skills We Found</h4>
+                        {% if skills %}
+                            <div>
+                                {% for skill in skills %}
+                                    <span class="skill-pill">{{ skill }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p class="text-muted">We couldn't find any specific skills from our list in your resume.</p>
+                        {% endif %}
+                    </div>
+
+                {% else %}
+
+
+                    <div class="dashboard-card text-center">
+                        <i class="bi bi-file-earmark-person-fill fs-1 text-primary mb-3"></i>
+                        <h4 class="fw-bold">It looks like you're new here!</h4>
+                        <p class="text-muted">                        <p class="text-muted">You haven't passed any skills to the system yet. Do that else the block will now show what you are expecting</p>
+                        <a href="{% url 'show_questions' %}" class="btn btn-primary btn-lg mt-3">Upload Resume Now / ya questions show ki link daal di for testingg</a>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
