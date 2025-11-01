@@ -1,511 +1,115 @@
-<div align="center">
+## Nexora - InterviewPrepAI
 
-# 🚀 Nexora - InterviewPrepAI
-
-**Your Personal AI-Powered Interview Preparation Platform**
-
-[![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
-[![Django](https://img.shields.io/badge/Django-5.0.6-green?style=flat-square&logo=django&logoColor=white)](https://www.djangoproject.com/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Ready-47A248?style=flat-square&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
-[![Contributors](https://img.shields.io/badge/contributors-4-orange.svg?style=flat-square)](#-team)
-
-*Nexora is an intelligent interview preparation system that analyzes your resume, generates tailored questions, and provides adaptive feedback to help you ace your technical interviews.*
-
-[📋 Features](#-features) •
-[🚀 Quick Start](#-quick-start) •
-[📖 How It Works](#-how-it-works) •
-[🛠️ Tech Stack](#️-tech-stack) •
-[👥 Team](#-team)
-
-</div>
+Your personal, lightweight interview prep assistant. Upload a resume, practice tailored questions, and get simple feedback—all in a clean Django app.
 
 ---
 
-## 🌟 Overview
+## What’s inside
 
-### The Problem
-Traditional interview preparation is **generic**, **inefficient**, and **impersonal**. Candidates often:
-- 📉 Practice with questions unrelated to their skills
-- ⚡ Waste time on irrelevant topics
-- 🎯 Lack personalized feedback
-- 📝 Have no adaptive learning path
-
-### Our Solution
-Nexora creates a **dynamic, personalized interview preparation experience**:
-
-1. **📄 Smart Resume Analysis** - Parses PDF/DOCX resumes to extract skills across multiple domains
-2. **❓ Intelligent Question Matching** - Selects relevant questions based on detected skills
-3. **🎯 Adaptive Difficulty** - Adjusts question difficulty based on your performance
-4. **📊 Detailed Feedback** - Provides keyword-based scoring and improvement suggestions
+- Resume upload (PDF/DOCX)
+- Skill-based question flow
+- Simple feedback after submission
+- SQLite by default; MongoDB optional (code present, not required)
 
 ---
 
-## ✨ Features
-
-<table>
-<tr>
-<td width="50%">
-
-### ✅ Current Features
-- ✅ **Resume Upload & Parsing**
-  - PDF and DOCX support
-  - Multi-domain skill extraction
-  - Keywords across 5+ categories
-  
-- ✅ **Smart Question Selection**
-  - Skill-based question matching
-  - Multi-level difficulty support
-  - Dynamic question bank
-
-- ✅ **Adaptive Interview System**
-  - Real-time answer evaluation
-  - Keyword-based scoring
-  - Difficulty flag generation
-
-- ✅ **Intelligent Feedback**
-  - Per-question analysis
-  - Overall performance metrics
-  - Next-level recommendations
-
-- ✅ **MongoDB Integration**
-  - Resume storage
-  - Answer persistence
-  - Session management
-
-</td>
-<td width="50%">
-
-### 💡 Upcoming Features
-- 🔄 **Enhanced AI Analysis**
-  - LLM-based answer evaluation
-  - Semantic understanding
-  - Context-aware feedback
-
-- 🧠 **Advanced Question Generation**
-  - Dynamic question creation
-  - Contextual follow-ups
-  - Project-specific questions
-
-- 📈 **User Dashboard**
-  - Progress tracking
-  - Performance analytics
-  - Historical comparisons
-
-- 🎨 **UI/UX Improvements**
-  - Modern interface design
-  - Real-time feedback
-  - Interactive visualizations
-
-- 🌐 **Extended Features**
-  - Multi-language support
-  - Video interview simulation
-  - Industry-specific tracks
-
-</td>
-</tr>
-</table>
-
----
-
-## 🛠️ Tech Stack
-
-<div align="center">
-
-| Category | Technologies |
-|----------|-------------|
-| **Backend** | ![Python](https://img.shields.io/badge/Python_3.8+-3776AB?style=flat-square&logo=python&logoColor=white) ![Django](https://img.shields.io/badge/Django_5.0.6-092E20?style=flat-square&logo=django&logoColor=white) |
-| **Database** | ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white) ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white) |
-| **Document Processing** | ![PyMuPDF](https://img.shields.io/badge/PyMuPDF-FF6B6B?style=flat-square) ![python-docx](https://img.shields.io/badge/python--docx-4ECDC4?style=flat-square) ![PyPDF2](https://img.shields.io/badge/PyPDF2-45B7D1?style=flat-square) |
-| **Frontend** | ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) |
-
-</div>
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-- ![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python) or higher
-- ![MongoDB](https://img.shields.io/badge/MongoDB-4.0+-green?style=flat-square&logo=mongodb) (optional, for full features)
-- ![pip](https://img.shields.io/badge/pip-package%20manager-blue?style=flat-square)
-
-### ⚡ Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/pwnjoshi/InterviewPrepAI.git
-   cd nexora_project
-   ```
-
-2. **Create and activate virtual environment**
-   ```bash
-   # Windows
-   python -m venv venv
-   .\venv\Scripts\activate
-   
-   # macOS/Linux
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run database migrations**
-   ```bash
-   python manage.py migrate
-   ```
-
-5. **(Optional) Start MongoDB**
-   ```bash
-   # If you have MongoDB installed locally
-   mongod
-   ```
-
-6. **Start the development server**
-   ```bash
-   python manage.py runserver
-   ```
-
-7. **Open your browser** and navigate to:
-   ```
-   http://127.0.0.1:8000/
-   ```
-
-🎉 **You're all set!** Start uploading your resume and practicing interviews.
-
----
-
-## 📖 How It Works
-
-### 1️⃣ Resume Upload & Analysis
-```python
-# The ResumeParser extracts skills from your resume
-parser = ResumeParser()
-skills = parser.parse("your_resume.pdf")
-# Returns: {'Python', 'Django', 'Machine Learning', ...}
-```
-
-**Supported Skill Categories:**
-- 💻 **Core CS**: Python, Java, C++, Data Structures, Algorithms, OOP
-- 🌐 **Web Development**: React, Django, Node.js, REST API, HTML/CSS
-- 🤖 **AI/ML/DS**: TensorFlow, PyTorch, NLP, Computer Vision, Data Analysis
-- 🔒 **Cybersecurity**: Cryptography, Penetration Testing, Network Security
-- ☁️ **Database/Cloud/DevOps**: MongoDB, AWS, Docker, Kubernetes, Git
-
-### 2️⃣ Intelligent Question Selection
-The system matches questions from the question bank based on:
-- Detected skills from resume
-- User's difficulty level (Beginner/Intermediate/Hard)
-- Previous performance (adaptive difficulty)
-
-### 3️⃣ Answer Evaluation & Scoring
-```python
-# Keyword-based scoring algorithm
-score = keyword_match_score(user_answer, correct_keywords)
-flag = flag_for_score(score)
-# Returns: "Easier" | "Same" | "Harder"
-```
-
-### 4️⃣ Adaptive Feedback
-- **Per-question scores** with keyword matching
-- **Overall performance** metrics
-- **Difficulty flags** for next session
-- **Improvement suggestions**
-
----
-
-## 📁 Project Structure
+## Project structure
 
 ```
-nexora_project/
-├── 📂 interview/                    # Main Django application
-│   ├── 📄 views.py                 # Request handlers & business logic
-│   ├── 📄 urls.py                  # URL routing configuration
-│   ├── 📄 models.py                # Database models (Django ORM)
-│   ├── 📄 resume_parser.py         # PDF/DOCX resume parsing
-│   ├── 📄 mongo_conn.py            # MongoDB connection & operations
-│   ├── 📄 answers_flagging.py      # Answer evaluation logic
-│   ├── 📂 static/                  # Static files (CSS, JS, images)
-│   │   └── 📂 css/
-│   │       └── 📄 styles.css       # Application styling
-│   └── 📂 templates/               # HTML templates
-│       ├── 📄 base.html            # Base template with common layout
-│       ├── 📄 upload.html          # Resume upload interface
-│       ├── 📄 questions.html       # Interview questions display
-│       └── 📄 feedback.html        # Results & feedback page
-├── 📂 media/                        # Uploaded resume files
-├── 📂 nexora_project/               # Django project configuration
-│   ├── 📄 settings.py              # Project settings
-│   ├── 📄 urls.py                  # Root URL configuration
-│   └── 📄 wsgi.py                  # WSGI configuration
-├── 📄 integrate_flags.py            # Flagging system utilities
-├── 📄 manage.py                     # Django management script
-├── 📄 requirements.txt              # Python dependencies
-├── 📄 db.sqlite3                    # SQLite database (default)
-└── 📄 README.md                     # Project documentation
+.
+├─ db.sqlite3
+├─ integrate_flags.py
+├─ manage.py
+├─ README.md
+├─ requirements.txt
+├─ authentication/
+│  ├─ admin.py
+│  ├─ apps.py
+│  ├─ models.py
+│  ├─ tests.py
+│  ├─ urls.py
+│  ├─ views.py
+│  └─ migrations/
+├─ interview/
+│  ├─ admin.py
+│  ├─ answers_flagging.py
+│  ├─ apps.py
+│  ├─ models.py
+│  ├─ mongo_conn.py              
+│  ├─ resume_parser.py
+│  ├─ tests.py
+│  ├─ urls.py
+│  ├─ views.py
+│  ├─ static/
+│  │  └─ css/styles.css
+│  └─ templates/
+│     ├─ feedback.html
+│     ├─ index.html
+│     ├─ login.html
+│     ├─ questions.html
+│     └─ interview/
+│        ├─ dashboard.html
+│        └─ upload_resume.html
+├─ media/
+│  └─ resumes/
+└─ nexora_project/
+   ├─ asgi.py
+   ├─ settings.py
+   ├─ urls.py
+   └─ wsgi.py
 ```
 
 ---
 
-## 🎯 Key Features Explained
+## Quick start (Windows PowerShell)
 
-### Resume Parser
-- **Multi-format support**: PDF (via PyMuPDF) and DOCX (via python-docx)
-- **Keyword extraction**: Regex-based pattern matching
-- **Category classification**: 5 major skill domains
-- **Error handling**: Graceful fallbacks for parsing errors
+1) Clone and enter the project folder
 
-### Adaptive Difficulty System
-```python
-# Automatic difficulty adjustment based on performance
-if avg_score < 0.5:
-    next_level = "Easier"
-elif avg_score >= 0.8:
-    next_level = "Harder"
-else:
-    next_level = "Same"
+```powershell
+git clone https://github.com/pwnjoshi/InterviewPrepAI.git
+cd InterviewPrepAI
 ```
 
-### MongoDB Integration
-- **Resume storage**: Persistent candidate data
-- **Question management**: Dynamic question retrieval
-- **Session tracking**: Interview history and progress
-- **Answer persistence**: For future analysis
+2) Create and activate a virtual environment
 
----
-
-## 🔧 Configuration
-
-### MongoDB Setup (Optional)
-If you want to use MongoDB features, update the connection string in `interview/mongo_conn.py`:
-
-```python
-client = MongoClient("mongodb://localhost:27017/")
-# Or for MongoDB Atlas:
-# client = MongoClient("your-mongodb-atlas-connection-string")
+```powershell
+python -m venv venv
+./venv/Scripts/Activate.ps1
 ```
 
-### Environment Variables
-Create a `.env` file in the project root for sensitive configurations:
-```env
-SECRET_KEY=your-django-secret-key
-DEBUG=True
-MONGODB_URI=mongodb://localhost:27017/
+3) Install dependencies and run migrations
+
+```powershell
+pip install -r requirements.txt
+python manage.py migrate
 ```
 
----
+4) Run the server
 
-## 🗺️ Roadmap
-
-### 🎯 Phase 1: Core Features ✅
-- [x] Django project setup
-- [x] Resume parser (PDF/DOCX)
-- [x] Keyword-based skill extraction
-- [x] Question bank system
-- [x] Basic interview flow
-- [x] Feedback generation
-- [x] MongoDB integration
-- [x] Adaptive difficulty system
-
-### 🚀 Phase 2: AI Enhancement 🔄
-- [ ] LLM integration for answer analysis
-- [ ] Dynamic question generation
-- [ ] Semantic answer evaluation
-- [ ] Natural language feedback
-- [ ] Context-aware follow-up questions
-- [ ] Project-specific question generation
-
-### 🌟 Phase 3: Advanced Features 📅
-- [ ] User authentication & profiles
-- [ ] Dashboard with analytics
-- [ ] Progress tracking over time
-- [ ] Multi-language support
-- [ ] Video interview simulation
-- [ ] Industry-specific tracks
-- [ ] Mobile application
-- [ ] API for third-party integrations
-
----
-
-## 🎬 Usage Guide
-
-### Step 1: Upload Your Resume
-- Navigate to the home page
-- Click "Upload Resume"
-- Select your PDF or DOCX file
-- The system automatically extracts your skills
-
-### Step 2: Answer Interview Questions
-- Review the generated questions based on your skills
-- Type your answers in the provided text areas
-- Submit your responses when ready
-
-### Step 3: Receive Feedback
-- View your performance metrics
-- See per-question scores and flags
-- Get recommendations for improvement
-- Understand your next difficulty level
-
----
-
-## 🤝 Contributing
-
-We welcome contributions from the community! Here's how you can help:
-
-### 🐛 Reporting Bugs
-1. Check existing issues to avoid duplicates
-2. Create a detailed bug report with:
-   - Steps to reproduce
-   - Expected vs actual behavior
-   - System information
-   - Error logs/screenshots
-
-### 💡 Suggesting Features
-1. Open an issue with the "enhancement" label
-2. Provide a clear description and use case
-3. Explain the expected behavior
-
-### 🔧 Contributing Code
-1. Fork the repository
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-3. Make your changes and commit:
-   ```bash
-   git commit -m "Add amazing feature"
-   ```
-4. Push to your fork:
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-5. Open a Pull Request with a clear description
-
-### 📝 Code Style
-- Follow PEP 8 for Python code
-- Use meaningful variable and function names
-- Add docstrings to functions and classes
-- Write unit tests for new features
-
----
-
-## 👥 Team
-
-<div align="center">
-
-**Team NEXORA (PY-III-T031)**
-
-</div>
-
-<table align="center">
-<tr>
-<td align="center" width="25%">
-<img src="https://github.com/varshikasaini.png" width="100px;" alt="Varshika Saini"/><br />
-<sub><b>Varshika Saini</b></sub><br />
-<em>Team Lead & Frontend Developer</em><br />
-📧 varshikasaini17@gmail.com<br />
-<a href="https://github.com/varshikasaini">GitHub</a>
-</td>
-<td align="center" width="25%">
-<img src="https://github.com/pwnjoshi.png" width="100px;" alt="Pawan Joshi"/><br />
-<sub><b>Pawan Joshi</b></sub><br />
-<em>Backend & Parser Developer</em><br />
-📧 joshipawan2021@gmail.com<br />
-<a href="https://github.com/pwnjoshi">GitHub</a>
-</td>
-<td align="center" width="25%">
-<img src="https://github.com/aaditya-uniyal.png" width="100px;" alt="Aaditya Uniyal"/><br />
-<sub><b>Aaditya Uniyal</b></sub><br />
-<em>Question Bank & Logic</em><br />
-📧 aaditya.uniyal22@gmail.com<br />
-<a href="https://github.com/aaditya-uniyal">GitHub</a>
-</td>
-<td align="center" width="25%">
-<img src="https://github.com/nehal-vaid.png" width="100px;" alt="Nehal Vaid"/><br />
-<sub><b>Nehal Vaid</b></sub><br />
-<em>Feedback & Reporting Module</em><br />
-📧 vaidnehal10@gmail.com<br />
-<a href="https://github.com/nehal-vaid">GitHub</a>
-</td>
-</tr>
-</table>
-
----
-
-## 📊 Project Statistics
-
-<div align="center">
-
-![GitHub repo size](https://img.shields.io/github/repo-size/pwnjoshi/InterviewPrepAI?style=flat-square)
-![GitHub code size](https://img.shields.io/github/languages/code-size/pwnjoshi/InterviewPrepAI?style=flat-square)
-![GitHub last commit](https://img.shields.io/github/last-commit/pwnjoshi/InterviewPrepAI?style=flat-square)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/pwnjoshi/InterviewPrepAI?style=flat-square)
-
-</div>
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-```
-MIT License
-
-Copyright (c) 2025 Team NEXORA
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+```powershell
+python manage.py runserver
 ```
 
----
-
-## 🙏 Acknowledgments
-
-- Thanks to all contributors who helped shape this project
-- Inspired by the need for personalized interview preparation
-- Built with ❤️ by Team NEXORA
-- Special thanks to the open-source community
+Then open http://127.0.0.1:8000/ in your browser.
 
 ---
 
-## 📞 Contact & Support
+## How to use
 
-- 🐛 **Issues**: [GitHub Issues](https://github.com/pwnjoshi/InterviewPrepAI/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/pwnjoshi/InterviewPrepAI/discussions)
-- 📧 **Email**: joshipawan2021@gmail.com
-
----
-
-## 🌟 Show Your Support
-
-If you find this project helpful, please consider:
-- ⭐ Starring the repository
-- 🔀 Forking and contributing
-- 📢 Sharing with others
-- 🐛 Reporting issues
-
-<div align="center">
-
-![GitHub stars](https://img.shields.io/github/stars/pwnjoshi/InterviewPrepAI?style=social)
-![GitHub forks](https://img.shields.io/github/forks/pwnjoshi/InterviewPrepAI?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/pwnjoshi/InterviewPrepAI?style=social)
+1) Upload your resume on the home/dashboard page
+2) Answer the presented questions
+3) Submit to see basic feedback on your responses
 
 ---
 
-**[⬆ Back to Top](#-nexora---interviewprepai)**
+## Tech
 
-Made with 💙 by Team NEXORA | © 2025
+- Python 3.8+
+- Django 5.x
+- SQLite (default)
+- PyMuPDF/python-docx for resume parsing
+- MongoDB optional (present, not required for local run)
 
-</div>
+---
+
+Contributions and issues are welcome. Keep changes small and focused.
