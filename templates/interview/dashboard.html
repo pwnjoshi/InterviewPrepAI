@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexora Dashboard</title>
+    <title>Your Nexora Dashboard</title>
     
     {% load static %}
 
@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Global Combined CSS File -->
+    <!-- Your Combined CSS File -->
     <link rel="stylesheet" href="../../static/styles.css">
 
 </head>
@@ -43,8 +43,9 @@
                 </div>
 
                 {% if profile %}
-
-
+                    <!-- If profile exists, show skills and interview options -->
+                    
+                    <!-- Main Action Card -->
                     <div class="dashboard-card text-center">
                         <h4 class="fw-bold">Ready for the challenge?</h4>
                         <p class="text-muted">Your resume has been successfully parsed. Let's get you prepared!</p>
@@ -54,7 +55,7 @@
                         <p class="text-muted small mt-3">(Feature Coming Soon)</p>
                     </div>
 
-
+                    <!-- Skills Card -->
                     <div class="dashboard-card">
                         <h4 class="fw-bold mb-3">Skills We Found</h4>
                         {% if skills %}
@@ -69,8 +70,7 @@
                     </div>
 
                 {% else %}
-
-
+                    <!-- If no profile, show call to action -->
                     <div class="dashboard-card text-center">
                         <i class="bi bi-file-earmark-person-fill fs-1 text-primary mb-3"></i>
                         <h4 class="fw-bold">It looks like you're new here!</h4>
