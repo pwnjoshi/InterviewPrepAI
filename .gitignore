@@ -37,14 +37,27 @@ env/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/__pycache__/
+
+# Keep initial migrations
+!*/migrations/__init__.py
+!*/migrations/0001_initial.py
 
 # Media files (uploaded resumes - keep structure but ignore files)
 media/resumes/*
 !media/resumes/.gitkeep
+media/*.pdf
+media/*.docx
+media/*.doc
 
-# Static files
+# Static files (collected static files for production)
 staticfiles/
-/static/
+static_root/
+
+# Keep custom CSS
+!static/styles.css
 
 # Environment variables
 .env
