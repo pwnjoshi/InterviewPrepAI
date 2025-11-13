@@ -98,3 +98,119 @@ def get_session_data(session_id):
         }
     except InterviewSession.DoesNotExist:
         return None
+
+
+
+logger = logging.getLogger(__name__)
+def get_user_profile(user):
+    """
+    Get or create Profile for the authenticated user.
+    If profile doesn't exist, it is automatically created.
+    """
+    try:
+        profile, created = Profile.objects.get_or_create(
+            user=user,
+            defaults={
+                "unique_user_id": f"USER_{user.id}_{user.username}",
+                "name": user.username,
+                "email": user.email or ""
+            }
+        )
+
+        if created:
+            logger.info(f" New profile created for user: {user.username}")
+        else:
+            logger.info(f" Existing profile fetched for user: {user.username}")
+
+        return profile
+
+    except Exception as e:
+        logger.error(f" Error retrieving or creating profile for {user.username}: {str(e)}")
+        return None
+
+
+def get_latest_resume(username):
+    """
+    Retrieve the most recent resume uploaded by a specific user.
+    Returns None if no resume exists.
+    """
+    try:
+        resume = Resume.objects.filter(username=username).order_by('-uploaded_at').first()
+        if resume:
+            logger.info(f"Latest resume fetched for {username}")
+        else:
+            logger.warning(f" No resume found for {username}")
+        return resume
+
+    except Exception as e:
+        logger.error(f" Error fetching latest resume for {username}: {str(e)}")
+        return None
+
+
+def get_all_questions(limit=10):
+    """
+    Fetch a limited number of questions from the Question collection.
+    Can be customized later to filter by skill or level.
+    """
+    try:
+        questions = Question.objects.all()[:limit]
+        logger.info(f" Retrieved {len(questions)} questions (limit={limit})")
+        return questions
+
+    except Exception as e:
+        logger.error(f" Error retrieving questions: {str(e)}")
+        return []
+def get_interview_session(session_id):
+    """
+    Retrieve a specific interview session using its unique session_id.
+    Returns None if not found.
+    """
+    try:
+        session = InterviewSession.objects.filter(session_id=session_id).first()
+        if session:
+            logger.info(f"Interview session '{session_id}' retrieved successfully.")
+        else:
+            logger.warning(f" Interview session '{session_id}' not found.")
+        return session
+
+    except Exception as e:
+        logger.error(f" Error retrieving session {session_id}: {str(e)}")
+        return None
+
+def update_session_results(session_id, score, evaluation_data, profile_updates):
+    """
+    Update session results after evaluation.
+    Also updates the user's profile if performance level changes.
+    """
+    try:
+        session = InterviewSession.objects.filter(session_id=session_id).first()
+        if not session:
+            logger.warning(f" Session '{session_id}' not found for update.")
+            return {"success": False, "message": "Session not found"}
+
+        # Update session fields
+        session.score = score
+        session.flag_records = evaluation_data.get("flag_records", {})
+        session.recommended_next_level = evaluation_data.get("recommended_level")
+        session.evaluation_flag = evaluation_data.get("flag")
+        session.save()
+
+        logger.info(f"Updated interview session '{session_id}' with new score: {score}")
+
+        # Update user's profile if needed
+        if profile_updates and "username" in profile_updates:
+            user = User.objects.filter(username=profile_updates["username"]).first()
+            if user:
+                profile = Profile.objects.filter(user=user).first()
+                if profile:
+                    new_level = profile_updates.get("current_level")
+                    if new_level:
+                        profile.current_level = new_level
+                        profile.save()
+                        logger.info(f"Updated {user.username}'s level to {new_level}")
+
+        return {"success": True, "message": "Session and profile updated successfully"}
+
+    except Exception as e:
+        logger.error(f" Error updating session '{session_id}': {str(e)}")
+        return {"success": False, "message": str(e)}
