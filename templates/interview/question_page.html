@@ -1,0 +1,37 @@
+<h2>Interview in Progress</h2>
+<p>Question {{ question_number }} of 10</p>
+
+{% if current_level %}
+<div class="alert alert-info">
+    <strong>Current Difficulty:</strong> 
+    <span class="badge 
+        {% if current_level == 'beginner' %}bg-success
+        {% elif current_level == 'intermediate' %}bg-warning
+        {% else %}bg-danger{% endif %}">
+        {{ current_level|title }}
+    </span>
+    {% if question_number > 1 %}
+        <small class="text-muted">
+            💡 Questions adapt based on your performance!
+        </small>
+    {% endif %}
+</div>
+{% endif %}
+
+<hr>
+
+<h3>{{ question.text }}</h3>
+
+<form method="POST">
+    {% csrf_token %}
+    <textarea 
+        name="answer" 
+        rows="10" 
+        cols="80" 
+        class="form-control"
+        placeholder="Type your answer here..."
+        required
+    ></textarea>
+    <br><br>
+    <button type="submit" class="btn btn-primary">Submit Answer and Go to Next Question</button>
+</form>

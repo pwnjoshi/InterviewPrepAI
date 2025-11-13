@@ -36,6 +36,16 @@
         <div class="row">
             <div class="col-lg-8 mx-auto">
 
+                <!-- Django Messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
                 <!-- Welcome Header -->
                 <div class="mb-4">
                     <h2 class="fw-bold">Your Interview Dashboard</h2>
@@ -45,14 +55,44 @@
                 {% if profile %}
                     <!-- If profile exists, show skills and interview options -->
                     
+                    <!-- Level Progress Card -->
+                    <div class="dashboard-card mb-4">
+                        <h4 class="fw-bold mb-3"><i class="bi bi-bar-chart-fill text-primary"></i> Your Progress</h4>
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <div class="mb-2">
+                                    <i class="bi bi-trophy-fill text-warning" style="font-size: 2rem;"></i>
+                                </div>
+                                <h5 class="text-primary">{{ profile.current_level|default:"Beginner"|title }}</h5>
+                                <p class="text-muted small">Current Level</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-2">
+                                    <i class="bi bi-graph-up-arrow text-success" style="font-size: 2rem;"></i>
+                                </div>
+                                <h5 class="text-success">
+                                    {% if profile.current_level == 'beginner' %}Intermediate{% elif profile.current_level == 'intermediate' %}Advanced{% else %}Expert{% endif %}
+                                </h5>
+                                <p class="text-muted small">Next Goal</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-2">
+                                    <i class="bi bi-lightning-fill text-info" style="font-size: 2rem;"></i>
+                                </div>
+                                <h5 class="text-info">{{ profile.current_level|title }} Questions</h5>
+                                <p class="text-muted small">Interview Difficulty</p>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Main Action Card -->
                     <div class="dashboard-card text-center">
                         <h4 class="fw-bold">Ready for the challenge?</h4>
                         <p class="text-muted">Your resume has been successfully parsed. Let's get you prepared!</p>
-                        <a href="#" class="btn btn-primary btn-lg mt-3">
-                            <i class="bi bi-camera-video-fill me-2"></i>Start New Interview
+                        <a href="{% url 'start_interview' %}" class="btn btn-primary btn-lg mt-3">
+                            <i class="bi bi-camera-video-fill me-2"></i>Start {{ profile.current_level|default:"Beginner"|title }} Interview
                         </a>
-                        <p class="text-muted small mt-3">(Feature Coming Soon)</p>
+                        <p class="text-muted small mt-3">Questions will adapt to your skill level</p>
                     </div>
 
                     <!-- Skills Card -->
