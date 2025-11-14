@@ -9,7 +9,8 @@ class Resume(models.Model):
     username = models.CharField(max_length=100)
     email = models.EmailField(blank=True, null=True)
     phone = models.CharField(max_length=20, blank=True, null=True)
-    skills = models.JSONField(default=list)  # list of extracted skills
+    skills = models.JSONField(default=list)
+    skill_categories = models.JSONField(default=dict)
     experience = models.TextField(blank=True, null=True)
     education = models.TextField(blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
@@ -45,12 +46,13 @@ class InterviewSession(models.Model):
     session_id = models.CharField(max_length=100, unique=True, default='TEMP_SESSION')
     username = models.CharField(max_length=100)
     skills = models.JSONField(default=list)
+    skill_categories = models.JSONField(default=dict)
     answers = models.JSONField(default=dict)
     score = models.FloatField(default=0)
-    current_level = models.CharField(max_length=50, default='beginner')  # Level of questions in this session
-    recommended_next_level = models.CharField(max_length=50, blank=True, null=True)  # Recommended level for next interview
-    evaluation_flag = models.CharField(max_length=20, blank=True, null=True)  # Easier/Same/Harder
-    flag_records = models.JSONField(default=dict)  # Detailed evaluation records
+    current_level = models.CharField(max_length=50, default='beginner')
+    recommended_next_level = models.CharField(max_length=50, blank=True, null=True)
+    evaluation_flag = models.CharField(max_length=20, blank=True, null=True)
+    flag_records = models.JSONField(default=dict)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
