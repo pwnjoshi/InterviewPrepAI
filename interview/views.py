@@ -5,6 +5,7 @@ from .models import Resume, Question, InterviewSession, Profile
 from .resume_parser import extract_text_from_resume, extract_skills
 from .db_operations import insert_resume, get_questions_by_skills, save_answers, get_session_data
 from .utils import get_adaptive_questions, calculate_interview_score, score_single_answer
+from .utils import get_fixed_interview_questions
 from .answer_evaluation import keyword_match_score
 import random
 
@@ -117,7 +118,8 @@ def start_interview_view(request):
     current_level = profile.current_level if hasattr(profile, 'current_level') else 'beginner'
     
     # --- 3. Get adaptive questions based on skills AND level ---
-    questions = get_adaptive_questions(skills, current_level=current_level, limit=10)
+    questions = get_fixed_interview_questions(skills)
+
 
     # If no questions found, try without level filtering
     if not questions:
